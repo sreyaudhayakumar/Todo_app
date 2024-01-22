@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Todo Project</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">HOME</a></li>
+        <li><a href="{% url 'tasks' %}">TASKS</a></li>
+    </ul>
+</nav>
+
+
+<div style="margin: 20px;">
+    <h1>Welcome to the TODO App!</h1>
+    
+
+    <!-- Add a task form -->
+<form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    <h2>Add a Task</h2>
+
+    <label for="task_title">Task Title:</label>
+    <input type="text" id="task_title" name="title" required>
+
+    <label for="task_desc">Task Description:</label>
+    <textarea id="task_desc" name="desc" rows="4" required></textarea>
+
+    <input type="submit" value="Add Task">
+</form>
+
+</div>
+
+</body>
+</html>
